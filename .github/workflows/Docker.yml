@@ -21,3 +21,15 @@ jobs:
         username: mmartinsvitor
         password: ${{ secrets.PASSWORD_DOCKERHUB }}
         
+    - name: Build and push Docker images
+  # You may pin to the exact commit or the version.
+  # uses: docker/build-push-action@3b5e8027fcad23fda98b2e3ac259d8d67585f671
+      uses: docker/build-push-action@v4.0.0
+      with:
+      
+        context: .
+        # Path to the Dockerfile
+        file: ./Dockerfile
+        push: true        
+        tags: mmartinsvitor/ci_lesson:${{github.ref_name}}
+        # github.ref_name >> referencia para branch 
